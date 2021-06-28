@@ -12,7 +12,7 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server, {
     cors: {
-        origin: 'http://localhost:3000'
+        origin: 'https://chat-app-c101d.web.app/'
     }
 })
 
