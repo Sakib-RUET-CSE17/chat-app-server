@@ -5,7 +5,7 @@ const cors = require('cors')
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001
 
 const router = require('./router')
 
@@ -13,7 +13,7 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server, {
     cors: {
-        origin: 'https://chat-app-c101d.web.app'
+        origin: 'https://vaccine-for-all.web.app'
     }
 })
 
@@ -26,8 +26,8 @@ io.on('connection', (socket) => {
 
         if (error) return callback(error)
 
-        socket.emit('message', { user: 'admin', text: `${user.name}, welcome to the room ${user.room}` })
-        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name}, has joined!` })
+        socket.emit('message', { user: 'admin', text: `${user.name}, welcome to the live support` })
+        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `Hi, this is ${user.name}. How can I help you?` })
 
         socket.join(user.room)
 
